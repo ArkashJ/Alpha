@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GMCH CSR Partnership — Deck A: Indian Conglomerates</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark', themeVariables: { primaryColor: '#1e3a5f', primaryTextColor: '#ffffff', primaryBorderColor: '#60a5fa', lineColor: '#60a5fa', secondaryColor: '#0f2744', tertiaryColor: '#162d50', background: '#0a1628', fontFamily: 'Inter, sans-serif', fontSize: '13px' } });
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: linear-gradient(135deg, #0a1628 0%, #1a2744 25%, #0f2d4a 50%, #1a3a5c 75%, #0d1a2d 100%); background-attachment: fixed; min-height: 100vh; padding: 60px 30px; color: #ffffff; line-height: 1.7; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 50px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); position: relative; }
+        .header::before { content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 400px; height: 400px; background: radial-gradient(circle, rgba(96,165,250,0.1) 0%, transparent 70%); pointer-events: none; }
+        .institution-badge { display: inline-block; padding: 8px 20px; background: linear-gradient(135deg, rgba(96,165,250,0.15) 0%, rgba(96,165,250,0.05) 100%); border: 1px solid rgba(96,165,250,0.3); border-radius: 24px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; color: #60a5fa; text-transform: uppercase; margin-bottom: 20px; }
+        h1 { font-size: 2.75rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; background: linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #94a3b8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .subtitle { font-size: 1rem; color: rgba(255,255,255,0.5); font-weight: 400; letter-spacing: 0.02em; margin-bottom: 12px; }
+        .audience-tag { display: inline-block; padding: 6px 16px; background: linear-gradient(135deg, rgba(251,191,36,0.2) 0%, rgba(245,158,11,0.1) 100%); border: 1px solid rgba(251,191,36,0.4); border-radius: 20px; font-size: 0.8rem; font-weight: 600; color: #fbbf24; letter-spacing: 0.05em; }
+        .section { margin-bottom: 40px; }
+        .section-header { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #60a5fa; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+        .section-header::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(96,165,250,0.4) 0%, rgba(96,165,250,0.1) 50%, transparent 100%); }
+        .card { background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 28px 32px; margin-bottom: 16px; backdrop-filter: blur(10px); position: relative; overflow: hidden; }
+        .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(96,165,250,0.3) 50%, transparent 100%); }
+        .card h3 { font-size: 1.15rem; font-weight: 600; color: #60a5fa; margin-bottom: 14px; }
+        .card h4 { font-size: 1rem; font-weight: 500; color: #93c5fd; margin-bottom: 10px; margin-top: 16px; }
+        .card p { color: rgba(255,255,255,0.85); margin-bottom: 12px; }
+        .card p:last-child { margin-bottom: 0; }
+        .feature-card { background: linear-gradient(135deg, rgba(52,211,153,0.08) 0%, rgba(16,185,129,0.03) 100%); border: 1px solid rgba(52,211,153,0.2); border-radius: 12px; padding: 24px 28px; margin-bottom: 16px; }
+        .feature-card h3 { color: #34d399; font-size: 1.15rem; font-weight: 600; margin-bottom: 14px; }
+        .feature-card p { color: rgba(255,255,255,0.85); margin-bottom: 10px; }
+        .feature-card p:last-child { margin-bottom: 0; }
+        .warning-card { background: linear-gradient(135deg, rgba(251,191,36,0.08) 0%, rgba(245,158,11,0.03) 100%); border: 1px solid rgba(251,191,36,0.2); border-radius: 12px; padding: 24px 28px; margin-bottom: 16px; }
+        .warning-card h3 { color: #fbbf24; font-size: 1.15rem; font-weight: 600; margin-bottom: 14px; }
+        .warning-card p { color: rgba(255,255,255,0.85); margin-bottom: 10px; }
+        .special-card { background: linear-gradient(135deg, rgba(167,139,250,0.1) 0%, rgba(139,92,246,0.05) 100%); border: 1px solid rgba(167,139,250,0.25); border-radius: 12px; padding: 24px 28px; margin-bottom: 16px; }
+        .special-card h3 { color: #a78bfa; font-size: 1.15rem; font-weight: 600; margin-bottom: 14px; }
+        .special-card p { color: rgba(255,255,255,0.85); margin-bottom: 10px; }
+        .highlight-card { background: linear-gradient(135deg, rgba(96,165,250,0.12) 0%, rgba(96,165,250,0.05) 100%); border-left: 3px solid #60a5fa; border-radius: 0 12px 12px 0; padding: 24px 28px; margin-bottom: 30px; }
+        .highlight-card .label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #60a5fa; margin-bottom: 12px; }
+        .role-card { background: linear-gradient(135deg, rgba(96,165,250,0.08) 0%, rgba(30,58,95,0.3) 100%); border: 1px solid rgba(96,165,250,0.2); border-radius: 12px; padding: 28px 24px 24px; margin-bottom: 16px; position: relative; }
+        .role-card .role-badge { position: absolute; top: -10px; left: 20px; background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%); padding: 4px 14px; border-radius: 12px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+        .role-card h3 { font-size: 1.1rem; font-weight: 600; color: #93c5fd; margin-bottom: 8px; }
+        .role-card p { color: rgba(255,255,255,0.75); font-size: 0.95rem; margin: 0; }
+        ul { list-style: none; padding: 0; }
+        li { padding: 8px 0; padding-left: 22px; position: relative; color: rgba(255,255,255,0.85); }
+        li::before { content: "→"; position: absolute; left: 0; color: #60a5fa; font-size: 0.9rem; }
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        .stat-card { background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 24px; text-align: center; position: relative; overflow: hidden; }
+        .stat-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #60a5fa 0%, #3b82f6 50%, #1e40af 100%); }
+        .stat-value { font-size: 2rem; font-weight: 700; background: linear-gradient(135deg, #60a5fa 0%, #93c5fd 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 6px; }
+        .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.05em; }
+        .flow-step { display: flex; align-items: flex-start; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .flow-step:last-child { border-bottom: none; }
+        .flow-number { width: 36px; height: 36px; background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 700; flex-shrink: 0; }
+        .flow-content h4 { font-size: 1rem; font-weight: 500; color: #ffffff; margin-bottom: 6px; }
+        .flow-content p { font-size: 0.95rem; color: rgba(255,255,255,0.65); margin: 0; }
+        .badge { display: inline-block; padding: 4px 12px; border-radius: 6px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+        .badge-success { background: linear-gradient(135deg, rgba(52,211,153,0.2) 0%, rgba(16,185,129,0.1) 100%); color: #34d399; border: 1px solid rgba(52,211,153,0.3); }
+        .badge-warning { background: linear-gradient(135deg, rgba(251,191,36,0.15) 0%, rgba(245,158,11,0.05) 100%); color: #fbbf24; border: 1px solid rgba(251,191,36,0.2); }
+        .badge-p2 { background: linear-gradient(135deg, rgba(96,165,250,0.2) 0%, rgba(59,130,246,0.1) 100%); color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); }
+        .data-table { width: 100%; border-collapse: collapse; }
+        .data-table th, .data-table td { padding: 14px 16px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .data-table th { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #60a5fa; background: rgba(96,165,250,0.05); }
+        .data-table td { color: rgba(255,255,255,0.85); font-size: 0.95rem; }
+        .data-table tr:hover td { background: rgba(96,165,250,0.03); }
+        .divider { height: 2px; background: linear-gradient(90deg, transparent 0%, rgba(96,165,250,0.3) 20%, rgba(96,165,250,0.3) 80%, transparent 100%); margin: 50px 0; position: relative; }
+        .divider::before { content: ''; position: absolute; top: -20px; left: 50%; transform: translateX(-50%); width: 200px; height: 40px; background: radial-gradient(ellipse, rgba(96,165,250,0.15) 0%, transparent 70%); }
+        .chart-container { position: relative; height: 300px; margin: 20px 0; }
+        .dept-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .dept-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 12px 16px; font-size: 0.9rem; color: rgba(255,255,255,0.8); }
+        .dept-item.superspecialty { border-color: rgba(96,165,250,0.25); background: rgba(96,165,250,0.05); color: #93c5fd; }
+        .tier-card { border-radius: 12px; padding: 24px; margin-bottom: 16px; position: relative; overflow: hidden; }
+        .tier-1 { background: linear-gradient(135deg, rgba(52,211,153,0.1) 0%, rgba(16,185,129,0.05) 100%); border: 1px solid rgba(52,211,153,0.25); }
+        .tier-2 { background: linear-gradient(135deg, rgba(96,165,250,0.1) 0%, rgba(59,130,246,0.05) 100%); border: 1px solid rgba(96,165,250,0.25); }
+        .tier-3 { background: linear-gradient(135deg, rgba(167,139,250,0.1) 0%, rgba(139,92,246,0.05) 100%); border: 1px solid rgba(167,139,250,0.25); }
+        .tier-4 { background: linear-gradient(135deg, rgba(251,191,36,0.1) 0%, rgba(245,158,11,0.05) 100%); border: 1px solid rgba(251,191,36,0.25); }
+        .tier-amount { font-size: 1.6rem; font-weight: 700; margin-bottom: 6px; }
+        .tier-1 .tier-amount { color: #34d399; }
+        .tier-2 .tier-amount { color: #60a5fa; }
+        .tier-3 .tier-amount { color: #a78bfa; }
+        .tier-4 .tier-amount { color: #fbbf24; }
+        .tier-title { font-size: 1rem; font-weight: 600; color: #ffffff; margin-bottom: 10px; }
+        .tier-desc { font-size: 0.9rem; color: rgba(255,255,255,0.7); }
+        .question-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 20px 24px; margin-bottom: 12px; }
+        .question-card p { color: rgba(255,255,255,0.85); font-size: 0.95rem; margin: 0; }
+        .question-card .q-num { color: #60a5fa; font-weight: 600; font-size: 0.85rem; margin-bottom: 6px; }
+        .contact-hero { background: linear-gradient(135deg, rgba(96,165,250,0.12) 0%, rgba(30,58,95,0.4) 100%); border: 1px solid rgba(96,165,250,0.25); border-radius: 16px; padding: 40px; text-align: center; }
+        .contact-name { font-size: 1.6rem; font-weight: 700; color: #ffffff; margin-bottom: 6px; }
+        .contact-title { font-size: 1rem; color: #93c5fd; margin-bottom: 4px; }
+        .contact-inst { font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-bottom: 20px; }
+        .contact-detail { font-size: 0.95rem; color: rgba(255,255,255,0.75); margin: 6px 0; }
+        @media (max-width: 768px) { body { padding: 40px 20px; } h1 { font-size: 2rem; } .grid, .grid-3, .grid-4, .dept-grid { grid-template-columns: 1fr; } .card { padding: 20px; } }
+        @media print { body { background: white; color: #1a1a1a; padding: 20px; } }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="institution-badge">Government Medical College &amp; Hospital · Sector 32, Chandigarh</div>
+        <h1>Partnering for a Healthier Bharat</h1>
+        <p class="subtitle">A Corporate Social Responsibility Engagement Proposal · Prepared by Prof. Suksham Jain, HOD Neonatology</p>
+        <div class="audience-tag">Deck A — Designed for India's Leading Conglomerates</div>
+    </div>
+
+    <!-- KEY TAKEAWAYS -->
+    <div class="highlight-card">
+        <div class="label">Executive Summary</div>
+        <ul>
+            <li>GMCH Chandigarh is NAAC A++ accredited, NIRF-ranked #34 in India, serving 7 lakh+ patients annually across 40+ specialties — one of India's most impactful government medical institutions</li>
+            <li>India's CSR mandate (Section 135, Companies Act 2013) requires 2% of average net profit — healthcare is consistently the #1 recipient sector, with ₹22,000+ crore deployed annually</li>
+            <li>A partnership with GMCH offers your organization measurable impact, naming rights, annual impact reporting, full CSR compliance, and a legacy that outlasts any single fiscal year</li>
+            <li>We invite you to co-design a partnership: equipment, infrastructure, research fellowships, or endowed programs — at a tier that matches your ambition</li>
+        </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 1: INDIA'S HEALTHCARE CHALLENGE -->
+    <div class="section">
+        <div class="section-header">India's Healthcare Challenge</div>
+        <div class="grid">
+            <div class="card">
+                <h3>The Burden</h3>
+                <p>India carries 20% of the world's disease burden with only 6.5% of global healthcare infrastructure. Northern India — the region GMCH primarily serves — accounts for disproportionate rates of neonatal mortality, cardiovascular disease, and trauma.</p>
+                <ul>
+                    <li>India loses 6.5 lakh newborns annually — preventable with NICU investment</li>
+                    <li>1 doctor per 1,511 people (WHO recommends 1:1,000)</li>
+                    <li>73% of India's rural population has no specialist access without travelling to a city hospital like GMCH</li>
+                    <li>Punjab, Haryana &amp; HP combined send over 2 lakh patients to Chandigarh annually</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Why Government Hospitals Are the Answer</h3>
+                <p>Private hospitals serve the top 15% of India's income pyramid. The other 85% depend entirely on institutions like GMCH. A single rupee invested in a government teaching hospital creates 8–12x the impact of the same rupee in a private facility.</p>
+                <ul>
+                    <li>Zero-cost care for Below Poverty Line families</li>
+                    <li>Training 150 MBBS + 300+ PG doctors per year who serve rural India</li>
+                    <li>Emergency care that does not turn away patients for inability to pay</li>
+                    <li>Research that addresses Indian epidemiology, not Western disease profiles</li>
+                </ul>
+            </div>
+        </div>
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px; margin-top: 16px;">
+            <h3 style="color: #60a5fa; font-size: 1rem; font-weight: 600; margin-bottom: 16px;">India's CSR Healthcare Spend Growth</h3>
+            <div class="chart-container">
+                <canvas id="csrGrowthChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 2: ABOUT GMCH -->
+    <div class="section">
+        <div class="section-header">About GMCH Chandigarh</div>
+        <div class="card">
+            <h3>History &amp; Identity</h3>
+            <p>Government Medical College &amp; Hospital (GMCH), Sector 32, Chandigarh was established in <strong>1991</strong> under the Chandigarh Administration, affiliated with Panjab University. Over three decades, it has grown from a 500-bed facility into one of northern India's premier tertiary-care teaching hospitals, serving as the backbone of public healthcare for the tri-city region and beyond.</p>
+            <p>GMCH is not merely a hospital — it is a medical ecosystem: training the doctors who serve rural Punjab and Haryana, generating research that informs national health policy, and providing zero-cost specialist care to India's most vulnerable families.</p>
+        </div>
+        <div class="grid grid-3">
+            <div class="feature-card">
+                <h3>NAAC A++ Accredited</h3>
+                <p>India's highest accreditation grade — awarded to institutions with the strongest academic, clinical, and research standards.</p>
+            </div>
+            <div class="feature-card">
+                <h3>NIRF Ranked #34</h3>
+                <p>National Institutional Ranking Framework 2025, Medical Category — among the top 7% of all medical institutions in India.</p>
+            </div>
+            <div class="feature-card">
+                <h3>35 Years of Service</h3>
+                <p>Three decades of uninterrupted public healthcare delivery — from routine outpatient to complex neurosurgery, burns, and neonatal intensive care.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 3: BY THE NUMBERS -->
+    <div class="section">
+        <div class="section-header">By the Numbers</div>
+        <div class="grid grid-4">
+            <div class="stat-card"><div class="stat-value">1,000+</div><div class="stat-label">Hospital Beds</div></div>
+            <div class="stat-card"><div class="stat-value">7 Lakh+</div><div class="stat-label">Patients per Year</div></div>
+            <div class="stat-card"><div class="stat-value">300+</div><div class="stat-label">Faculty Members</div></div>
+            <div class="stat-card"><div class="stat-value">40+</div><div class="stat-label">Specialties</div></div>
+        </div>
+        <div class="grid grid-4" style="margin-top: 16px;">
+            <div class="stat-card"><div class="stat-value">500+</div><div class="stat-label">Resident Doctors</div></div>
+            <div class="stat-card"><div class="stat-value">1,200+</div><div class="stat-label">Nursing &amp; Support</div></div>
+            <div class="stat-card"><div class="stat-value">150</div><div class="stat-label">MBBS Seats/Year</div></div>
+            <div class="stat-card"><div class="stat-value">50 Acres</div><div class="stat-label">Campus Area</div></div>
+        </div>
+        <div class="grid grid-4" style="margin-top: 16px;">
+            <div class="stat-card"><div class="stat-value">18+</div><div class="stat-label">Funded Research Projects</div></div>
+            <div class="stat-card"><div class="stat-value">8 States</div><div class="stat-label">DHR Research Coverage</div></div>
+            <div class="stat-card"><div class="stat-value">13-Bed</div><div class="stat-label">Level-III NICU</div></div>
+            <div class="stat-card"><div class="stat-value">#34</div><div class="stat-label">NIRF Medical Rank 2025</div></div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 4: ALL DEPARTMENTS -->
+    <div class="section">
+        <div class="section-header">Departments &amp; Specialties</div>
+        <div class="card" style="margin-bottom: 16px;">
+            <h3>Superspecialty Departments</h3>
+            <p>GMCH operates dedicated superspecialty services — available free of cost to patients who would otherwise travel to PGI or AIIMS at significant personal expense.</p>
+        </div>
+        <div class="dept-grid" style="margin-bottom: 20px;">
+            <div class="dept-item superspecialty">Cardiology</div>
+            <div class="dept-item superspecialty">Gastroenterology</div>
+            <div class="dept-item superspecialty">Neonatology</div>
+            <div class="dept-item superspecialty">Nephrology</div>
+            <div class="dept-item superspecialty">Neurology</div>
+            <div class="dept-item superspecialty">Neurosurgery</div>
+            <div class="dept-item superspecialty">Pulmonology</div>
+            <div class="dept-item superspecialty">Urology</div>
+            <div class="dept-item superspecialty">Burns &amp; Plastic Surgery</div>
+        </div>
+        <div class="card" style="margin-bottom: 16px;">
+            <h3>Clinical Departments</h3>
+        </div>
+        <div class="dept-grid" style="margin-bottom: 20px;">
+            <div class="dept-item">Anaesthesia &amp; Intensive Care</div>
+            <div class="dept-item">Community Medicine</div>
+            <div class="dept-item">Dentistry</div>
+            <div class="dept-item">Dermatology, Venereology &amp; Leprosy</div>
+            <div class="dept-item">Emergency Medicine</div>
+            <div class="dept-item">ENT (Ear, Nose &amp; Throat)</div>
+            <div class="dept-item">General Medicine</div>
+            <div class="dept-item">General Surgery</div>
+            <div class="dept-item">Obstetrics &amp; Gynaecology</div>
+            <div class="dept-item">Ophthalmology</div>
+            <div class="dept-item">Orthopaedics</div>
+            <div class="dept-item">Paediatrics</div>
+            <div class="dept-item">Psychiatry</div>
+            <div class="dept-item">Radiodiagnosis</div>
+            <div class="dept-item">Radiotherapy</div>
+            <div class="dept-item">Endocrinology</div>
+        </div>
+        <div class="card">
+            <h3>Basic Science &amp; Diagnostic Departments</h3>
+        </div>
+        <div class="dept-grid">
+            <div class="dept-item">Anatomy</div>
+            <div class="dept-item">Biochemistry</div>
+            <div class="dept-item">Forensic Medicine</div>
+            <div class="dept-item">Microbiology</div>
+            <div class="dept-item">Pathology</div>
+            <div class="dept-item">Pharmacology</div>
+            <div class="dept-item">Physiology</div>
+            <div class="dept-item">Medical Laboratory Technology</div>
+            <div class="dept-item">Hospital Administration</div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 5: NEONATOLOGY SPOTLIGHT -->
+    <div class="section">
+        <div class="section-header">Department Spotlight: Neonatology</div>
+        <div class="card">
+            <h3>The Department That Gave GMCH Its Voice in This Proposal</h3>
+            <p>The Department of Neonatology at GMCH Chandigarh is led by <strong>Professor Suksham Jain</strong>, Head of Department — a nationally recognized specialist in neonatal intensive care, research, and medical education. Prof. Jain serves as Member Secretary of GMCH's Institutional Ethics Committee and has been a key figure in directing national-level research and governance in neonatal medicine.</p>
+        </div>
+        <div class="grid">
+            <div class="feature-card">
+                <h3>NICU Infrastructure</h3>
+                <ul>
+                    <li>13-bedded Level-III Neonatal Intensive Care Unit</li>
+                    <li>10-bedded Intermediate Care Nursery</li>
+                    <li>10-bedded Neonatal Emergency Unit</li>
+                    <li>3-bedded Closed-Loop Resuscitation (CLR) area</li>
+                    <li>24/7 neonatologist-led care</li>
+                    <li>Transport incubator service for referral cases</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>What the Department Handles</h3>
+                <ul>
+                    <li>Extreme preterm births (as early as 24 weeks gestation)</li>
+                    <li>Neonatal sepsis — leading cause of newborn death in India</li>
+                    <li>Respiratory Distress Syndrome requiring ventilation support</li>
+                    <li>Birth asphyxia with therapeutic hypothermia protocol</li>
+                    <li>Congenital anomalies requiring surgical intervention</li>
+                    <li>Referrals from across Punjab, Haryana &amp; Himachal Pradesh</li>
+                </ul>
+            </div>
+        </div>
+        <div class="warning-card">
+            <h3>The Gap That Your Investment Can Close</h3>
+            <p>India loses over 6.5 lakh newborns every year — the highest neonatal mortality count of any country. The majority of these deaths are preventable with equipment: high-flow nasal cannulas, surfactant administration devices, transport incubators, phototherapy units, and high-frequency oscillatory ventilators. GMCH's NICU serves among the highest volumes of sick newborns in northern India, but critical equipment gaps exist.</p>
+            <p>A single corporate partner funding a 4-bed NICU expansion at GMCH would statistically prevent an estimated 120–180 neonatal deaths per year — with your company's name on the ward door.</p>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 6: FACULTY EXCELLENCE -->
+    <div class="section">
+        <div class="section-header">Faculty Excellence</div>
+        <div class="card">
+            <h3>UPSC-Selected Faculty — India's Most Rigorous Standard</h3>
+            <p>Every faculty member at GMCH is selected directly through the Union Public Service Commission (UPSC) — the same process used for IAS and IPS officers. This ensures that GMCH's 300+ faculty represent the top tier of India's medical talent, selected on merit without exception.</p>
+        </div>
+        <div class="grid grid-3">
+            <div class="role-card">
+                <span class="role-badge">Neonatology</span>
+                <h3>Prof. Suksham Jain</h3>
+                <p>Head of Department · Member Secretary, IEC · National research committee member · Author of multiple peer-reviewed publications</p>
+            </div>
+            <div class="role-card">
+                <span class="role-badge">Neonatology</span>
+                <h3>Prof. Deepak Chawla</h3>
+                <p>Professor &amp; nodal officer · Editorial board member, national neonatal journals · PI/Co-PI on 18 national research projects</p>
+            </div>
+            <div class="role-card">
+                <span class="role-badge">Community Medicine</span>
+                <h3>Prof. N.K. Goel</h3>
+                <p>Visiting Professor, Panjab University MPH program · Principal investigator, 8-state DHR research study · DST-funded project lead</p>
+            </div>
+        </div>
+        <div class="feature-card">
+            <h3>Faculty Achievements at a Glance</h3>
+            <ul>
+                <li>Faculty secured 5 DST (Department of Science &amp; Technology) funded projects across departments</li>
+                <li>Large-scale DHR-sponsored research spanning 8 Indian states — one of the most geographically broad studies in GMCH history</li>
+                <li>Dr. Dinesh Walia received the "Emerging Scholar Award" at the 9th International Conference on Health, Wellness &amp; Society, UC Berkeley (2019)</li>
+                <li>Dr. Dinesh Walia also received "Best Researcher Award" in Basic and Paramedical Sciences, GMCH Annual Day 2018</li>
+                <li>Community Medicine faculty published 17 research papers in national and international journals within a single year</li>
+                <li>Multiple faculty serve on editorial boards of national and international medical journals</li>
+                <li>Faculty serve as reviewers for ICMR Extra-mural Research Projects</li>
+                <li>GMCH students consistently achieve high percentile scores on USMLE, with placements in the USA</li>
+                <li>Graduates regularly secure UPSC, Armed Forces Medical Services, and state PSC positions</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 7: RESEARCH -->
+    <div class="section">
+        <div class="section-header">Research &amp; Innovation</div>
+        <div class="grid">
+            <div class="card">
+                <h3>Funding Bodies We Partner With</h3>
+                <ul>
+                    <li>ICMR — Indian Council of Medical Research</li>
+                    <li>DHR — Department of Health Research, Govt. of India</li>
+                    <li>DST — Department of Science &amp; Technology</li>
+                    <li>WHO — World Health Organization</li>
+                    <li>UNICEF — Children's health programs</li>
+                    <li>NACO/UNAIDS — HIV-related research</li>
+                    <li>ICDS — Child development programs</li>
+                    <li>Panjab University collaborative projects</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Research Output</h3>
+                <ul>
+                    <li>GMCH features in Nature Index — international research tracking system</li>
+                    <li>18+ active or completed research projects with national/international funding</li>
+                    <li>Short-term student research projects funded annually through ICMR STS program</li>
+                    <li>GMCH research has informed national health guidelines on neonatal care, maternal health, and community nutrition</li>
+                    <li>Faculty present at AIIMS New Delhi, national conferences, and international forums</li>
+                    <li>Anaesthesia &amp; ICU department serves as an NBE examination centre for national board</li>
+                </ul>
+            </div>
+        </div>
+        <div class="special-card" style="margin-top: 16px;">
+            <h3>The Research Partnership Opportunity for Conglomerates</h3>
+            <p>An endowed research chair or named research fellowship at GMCH allows your organization to attach its name to the generation of knowledge that shapes Indian healthcare policy. Annual fellowship recipients publish with institutional affiliation acknowledgment — your brand in global medical literature. This is the kind of legacy that Tata Memorial, Narayana Health, and the Murugappa Group have built through decades of research philanthropy.</p>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 8: AWARDS -->
+    <div class="section">
+        <div class="section-header">Awards &amp; Achievements (2015–2025)</div>
+        <div class="grid">
+            <div class="feature-card">
+                <h3>International Recognition</h3>
+                <ul>
+                    <li>UC Berkeley "Emerging Scholar Award" — Dr. Dinesh Walia, Community Medicine (2019)</li>
+                    <li>GMCH faculty presentations at WHO and UNICEF-affiliated conferences</li>
+                    <li>Nature Index listing for international research output</li>
+                    <li>Multiple faculty with publications in international peer-reviewed journals (PubMed indexed)</li>
+                </ul>
+            </div>
+            <div class="feature-card">
+                <h3>National Recognition</h3>
+                <ul>
+                    <li>NAAC A++ — highest possible accreditation grade in India</li>
+                    <li>NIRF Medical Rank: #34 (2025), #35 (2024), #32 (2023) — consistent top 35</li>
+                    <li>National Board of Examinations (NBE) designated centre for practical examinations</li>
+                    <li>"Best Researcher Award" — Basic &amp; Paramedical Sciences, GMCH Annual Day 2018</li>
+                    <li>5 DST-funded projects approved across multiple departments</li>
+                    <li>Dept of Anaesthesia: Technical lead for COVID ICU setup, Sector 48 COVID Hospital, Chandigarh</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card" style="margin-top: 16px;">
+            <h3>Academic Excellence</h3>
+            <ul>
+                <li>Students consistently ranked top performers at Panjab University examinations</li>
+                <li>GMCH graduates secure PG admissions at PGIMER, AIIMS New Delhi, and All-India PG entrance exams at disproportionately high rates</li>
+                <li>Faculty selected through UPSC — same standard as India's premier civil services</li>
+                <li>Indian Public Health Association Annual Conference presentations (AIIMS New Delhi, 2020)</li>
+                <li>47th Annual National Conference of Indian Association of Preventive &amp; Social Medicine (2020)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 9: INFRASTRUCTURE -->
+    <div class="section">
+        <div class="section-header">Infrastructure &amp; Facilities</div>
+        <div class="grid">
+            <div class="card">
+                <h3>Hospital Infrastructure</h3>
+                <ul>
+                    <li>1,000+ bed multi-specialty hospital on a 50-acre campus</li>
+                    <li>Emergency Block (Block-A): 250 beds, 24/7 emergency with all specialties</li>
+                    <li>Multiple modular Operation Theatres across departments</li>
+                    <li>Modern 9-bedded Medicine ICU (MICU) — opened 2015</li>
+                    <li>Level-III NICU: 13 intensive + 10 intermediate + 10 emergency beds</li>
+                    <li>Advanced Radiology: CT, MRI, fluoroscopy, ultrasound suites</li>
+                    <li>Radiotherapy department with linear accelerator</li>
+                    <li>Modern Endoscopy suite (Gastroenterology)</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Academic &amp; Research Infrastructure</h3>
+                <ul>
+                    <li>State-of-the-art lecture theatres and seminar rooms</li>
+                    <li>Central Research Laboratory with modern equipment</li>
+                    <li>Histology, Pathology, Microbiology labs with advanced diagnostics</li>
+                    <li>Anatomy museum and embalming facility for medical education</li>
+                    <li>Dedicated student hostel accommodations on campus</li>
+                    <li>Hospital library with national and international journal subscriptions</li>
+                    <li>Digital health records system in active deployment</li>
+                    <li>Telemedicine capability for remote patient consultations</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 10: NEEDS / GAPS -->
+    <div class="section">
+        <div class="section-header">Where Investment Is Needed Most</div>
+        <div class="warning-card">
+            <h3>Honest Assessment: The Gaps</h3>
+            <p>GMCH serves 7 lakh patients annually on a government allocation that was designed for a fraction of that load. The institution's excellence is achieved despite resource constraints — not because of adequate funding. The following represent the areas where corporate partnership would have the most direct patient impact.</p>
+        </div>
+        <div class="grid grid-3" style="margin-top: 16px;">
+            <div class="card">
+                <h3>Neonatology &amp; Pediatrics</h3>
+                <ul>
+                    <li>High-frequency oscillatory ventilators</li>
+                    <li>Transport incubators for referral neonates</li>
+                    <li>Phototherapy units (LED-based)</li>
+                    <li>Pulse oximeters — bedside monitoring</li>
+                    <li>Surfactant delivery systems</li>
+                    <li>NICU expansion to 20 intensive beds</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Emergency &amp; Critical Care</h3>
+                <ul>
+                    <li>ICU bed expansion — current capacity frequently overwhelmed</li>
+                    <li>Defibrillators and cardiac monitors</li>
+                    <li>Point-of-care diagnostic equipment</li>
+                    <li>Trauma resuscitation equipment</li>
+                    <li>Dedicated stroke unit setup</li>
+                    <li>Ventilator capacity expansion</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Research &amp; Education</h3>
+                <ul>
+                    <li>Research fellowships for junior faculty</li>
+                    <li>Simulation lab for surgical training</li>
+                    <li>Digital library and journal access expansion</li>
+                    <li>Conference travel grants for faculty</li>
+                    <li>Genomics and molecular diagnostics lab</li>
+                    <li>Skills lab for MBBS and PG students</li>
+                </ul>
+            </div>
+        </div>
+        <div class="grid" style="margin-top: 16px;">
+            <div class="card">
+                <h3>Surgical Specialties</h3>
+                <ul>
+                    <li>Laparoscopic surgery equipment upgrades</li>
+                    <li>Neurosurgery navigation system</li>
+                    <li>Urology endoscopy equipment</li>
+                    <li>Burns unit bed expansion and skin grafting equipment</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Diagnostics</h3>
+                <ul>
+                    <li>High-field MRI machine (current unit aging)</li>
+                    <li>Digital X-ray upgrade across departments</li>
+                    <li>Advanced biochemistry analyzers</li>
+                    <li>Echocardiography machine for cardiology</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 11: AUDIENCE-SPECIFIC — CONGLOMERATES -->
+    <div class="section">
+        <div class="section-header">For India's Great Conglomerates: Building a Health Legacy</div>
+        <div class="special-card">
+            <h3>India's Most Enduring Corporate Legacies Are in Healthcare</h3>
+            <p>Tata Memorial Centre — founded in 1941 — now treats over 70,000 cancer patients annually and is India's premier cancer institution. The Reliance Foundation runs maternal and child health programs that touch millions. The Murugappa Group has funded medical colleges. These legacies outlive balance sheets, market cycles, and leadership transitions. They define what a company stood for in its era.</p>
+            <p>GMCH offers a rare opportunity: a NAAC A++ government institution — already established, already serving 7 lakh patients, already ranked in India's top 35 — where your investment amplifies existing infrastructure rather than building from zero. The leverage is extraordinary.</p>
+        </div>
+        <div class="grid">
+            <div class="feature-card">
+                <h3>Legacy Naming Opportunities at GMCH</h3>
+                <ul>
+                    <li>[Your Company] NICU Wing — 20-bed expansion</li>
+                    <li>[Your Company] Endowed Research Chair in Neonatology / Surgery / Medicine</li>
+                    <li>[Your Company] Annual Merit Fellowship for PG residents</li>
+                    <li>[Your Company] Skills &amp; Simulation Lab</li>
+                    <li>[Your Company] Emergency Trauma Bay</li>
+                    <li>[Your Company] Central Diagnostic Laboratory</li>
+                    <li>[Your Company] Lecture Theatre &amp; Auditorium</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>SDG &amp; ESG Alignment</h3>
+                <ul>
+                    <li><strong>SDG 3:</strong> Good Health &amp; Well-being — direct alignment</li>
+                    <li><strong>SDG 4:</strong> Quality Education — supporting India's next generation of doctors</li>
+                    <li><strong>SDG 10:</strong> Reduced Inequalities — serving BPL and underserved patients</li>
+                    <li><strong>SDG 17:</strong> Partnerships for the Goals — public-private collaboration model</li>
+                    <li>Fully reportable in your Annual Report's CSR section</li>
+                    <li>Annual independent impact report provided by GMCH</li>
+                    <li>Eligible for Schedule VII CSR deduction under Companies Act 2013</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card" style="margin-top: 16px;">
+            <h3>What the Best Conglomerates Have Done — and What You Can Do at GMCH</h3>
+            <table class="data-table">
+                <thead>
+                    <tr><th>Conglomerate</th><th>Health CSR FY24</th><th>Focus Area</th><th>What GMCH Can Offer You</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Reliance Industries</td><td>₹200 Crore</td><td>Cancer, maternal-child, rural health</td><td>Neonatology wing, maternal health program</td></tr>
+                    <tr><td>Infosys Foundation</td><td>₹110 Crore</td><td>Hospital construction, pediatric ICU</td><td>NICU expansion, skills lab, research fellowship</td></tr>
+                    <tr><td>Tata Steel</td><td>₹100 Crore</td><td>Tribal health, emergency care</td><td>Emergency bay, trauma equipment, ICU beds</td></tr>
+                    <tr><td>Aditya Birla Group</td><td>₹55 Crore</td><td>Safe motherhood, hospital upgrades</td><td>OBG/Neonatal suite, research chair</td></tr>
+                    <tr><td>Wipro Foundation</td><td>₹75 Crore</td><td>Primary health, palliative care</td><td>Geriatrics/palliative unit, simulation lab</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 12: FUNDING TIERS -->
+    <div class="section">
+        <div class="section-header">Partnership Tiers — Choose Your Level</div>
+        <div class="grid">
+            <div class="tier-card tier-1">
+                <div class="tier-amount">₹5L – ₹25L</div>
+                <div class="tier-title">Equipment Partner</div>
+                <div class="tier-desc">Donate specific medical equipment: NICU ventilators, phototherapy units, cardiac monitors, point-of-care diagnostics. Plaque recognition on donated equipment. Suitable for annual CSR budget allocation.</div>
+            </div>
+            <div class="tier-card tier-2">
+                <div class="tier-amount">₹25L – ₹1Cr</div>
+                <div class="tier-title">Program Sponsor</div>
+                <div class="tier-desc">Fund a named fellowship, research project, or department program. Annual impact report. Named recognition in department communications. Suitable for companies seeking multi-year CSR engagement.</div>
+            </div>
+            <div class="tier-card tier-3">
+                <div class="tier-amount">₹1Cr – ₹5Cr</div>
+                <div class="tier-title">Infrastructure Partner</div>
+                <div class="tier-desc">Fund a ward upgrade, ICU expansion, named lab, or simulation centre. Naming rights for the facility. Inauguration event with media coverage. Long-term MOU with GMCH. Board visibility.</div>
+            </div>
+            <div class="tier-card tier-4">
+                <div class="tier-amount">₹5Cr+</div>
+                <div class="tier-title">Legacy Partner</div>
+                <div class="tier-desc">Build or fully equip a new wing, department, or building. Full naming rights. Endowed chair or annual fellowship in perpetuity. Annual impact gala. Co-branding on all institutional communications. Permanent legacy at GMCH.</div>
+            </div>
+        </div>
+        <div class="highlight-card" style="margin-top: 20px;">
+            <div class="label">Flexibility Note</div>
+            <ul>
+                <li>All tiers are negotiable — we welcome multi-year commitments, equipment-in-kind donations, and hybrid models</li>
+                <li>One-time grants, annual grants, and multi-year endowments all welcomed</li>
+                <li>We can structure partnerships around your CSR reporting calendar (April–March or calendar year)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 13: PARTNERSHIP BENEFITS -->
+    <div class="section">
+        <div class="section-header">What Your Organisation Gains</div>
+        <div class="grid grid-3">
+            <div class="feature-card">
+                <h3>CSR Compliance</h3>
+                <p>Healthcare funding at a government hospital is explicitly listed under Schedule VII of the Companies Act 2013. Full compliance. No ambiguity. Straightforward documentation for your Annual Report CSR section.</p>
+            </div>
+            <div class="feature-card">
+                <h3>80G Tax Benefit</h3>
+                <p>Contributions to GMCH (a government institution) are eligible for deduction under Section 80G of the Income Tax Act. Reduces effective cost of your CSR contribution significantly.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Naming &amp; Branding Rights</h3>
+                <p>Plaques, named wards, named fellowships, and named research chairs — visible to 7 lakh patients and thousands of medical students annually. Lasting brand presence in northern India's most trusted public health institution.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Annual Impact Report</h3>
+                <p>GMCH will provide a detailed annual report: patients served in your named unit, research outputs from your fellowship, equipment utilization data. Fully auditable for ESG/CSR reporting.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Media &amp; Inauguration</h3>
+                <p>Inauguration event with Chandigarh Administration officials, GMCH Principal, and department heads. Media coverage, press release, and social media co-promotion at launch.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Employee Engagement</h3>
+                <p>Offer your employees volunteer programs, health screening camps organized by GMCH, and access to world-class health education sessions hosted by GMCH faculty. Boosts internal ESG narrative.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 14: QUESTIONS FOR CORPORATE -->
+    <div class="section">
+        <div class="section-header">Questions for Our Conversation</div>
+        <div class="card" style="margin-bottom: 16px;">
+            <h3>To Design the Right Partnership Together</h3>
+            <p>We do not have a one-size-fits-all ask. The following questions help us understand what a meaningful partnership looks like for your organisation — and we welcome honest conversation about each.</p>
+        </div>
+        <div class="question-card"><div class="q-num">Question 1</div><p>What is your organisation's primary CSR priority for healthcare — equipment, research, education, infrastructure, or community health outreach? We will design around your answer.</p></div>
+        <div class="question-card"><div class="q-num">Question 2</div><p>Is your organization interested in a single-year grant, multi-year commitment, or an in-perpetuity endowment? Each has different naming and recognition structures.</p></div>
+        <div class="question-card"><div class="q-num">Question 3</div><p>Which patient population most resonates with your company's mission — newborns and mothers, cancer patients, trauma and emergency, rural community health, or another area?</p></div>
+        <div class="question-card"><div class="q-num">Question 4</div><p>Does your company have a preference for physical infrastructure (named wards, labs, buildings) versus programmatic investment (fellowships, research, community camps)?</p></div>
+        <div class="question-card"><div class="q-num">Question 5</div><p>Are there geographic employees or communities near Chandigarh (Punjab, Haryana, Himachal Pradesh) who could benefit from health screening camps as part of the partnership?</p></div>
+        <div class="question-card"><div class="q-num">Question 6</div><p>Would your organization like to co-design the impact metrics that we report annually — or would you prefer GMCH to define standard impact KPIs?</p></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 15: EXISTING PARTNERS -->
+    <div class="section">
+        <div class="section-header">Our Corporate Partners</div>
+        <div class="warning-card">
+            <h3>Be Among the First — or Join Our Growing Family</h3>
+            <p>GMCH is actively building its corporate partnership program. We are in conversations with several organizations across industry sectors. This section will be updated with confirmed partner logos and testimonials as partnerships are formalized. We invite you to be among the founding corporate partners — with the premium naming and recognition that comes with pioneering status at a NAAC A++ government institution.</p>
+        </div>
+        <div class="grid grid-3" style="margin-top: 16px;">
+            <div class="card" style="text-align: center; padding: 32px;">
+                <p style="color: rgba(255,255,255,0.3); font-size: 0.9rem; font-style: italic;">[Partner Logo Placeholder]</p>
+                <p style="color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-top: 8px;">Founding Partner</p>
+            </div>
+            <div class="card" style="text-align: center; padding: 32px;">
+                <p style="color: rgba(255,255,255,0.3); font-size: 0.9rem; font-style: italic;">[Partner Logo Placeholder]</p>
+                <p style="color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-top: 8px;">Founding Partner</p>
+            </div>
+            <div class="card" style="text-align: center; padding: 32px;">
+                <p style="color: rgba(255,255,255,0.3); font-size: 0.9rem; font-style: italic;">[Your Company Here]</p>
+                <p style="color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-top: 8px;">Founding Partner</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 16: HOW TO PARTNER -->
+    <div class="section">
+        <div class="section-header">How to Partner — Three Steps</div>
+        <div class="card">
+            <div class="flow-step">
+                <div class="flow-number">1</div>
+                <div class="flow-content">
+                    <h4>Exploratory Conversation</h4>
+                    <p>Contact Prof. Suksham Jain directly. A 30-minute call or visit to the department — we will walk you through the NICU, the wards, and the people your investment will serve. No commitment required. Just conversation.</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-number">2</div>
+                <div class="flow-content">
+                    <h4>MOU &amp; Partnership Design</h4>
+                    <p>We draft a Memorandum of Understanding aligned with your CSR calendar, tax year, and reporting requirements. Your legal team reviews. GMCH administration signs. Typically completed in 3–4 weeks.</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-number">3</div>
+                <div class="flow-content">
+                    <h4>Inauguration &amp; Annual Impact Reporting</h4>
+                    <p>Launch event at GMCH with your leadership and ours. Equipment installed, fellowship announced, or groundbreaking held. Annual impact report delivered every March — in time for your annual report CSR section.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 17: CSR LAW -->
+    <div class="section">
+        <div class="section-header">CSR Compliance Explainer</div>
+        <div class="card">
+            <h3>Section 135, Companies Act 2013</h3>
+            <p>India is the world's first country to mandate corporate social responsibility by law. Under Section 135 of the Companies Act 2013, companies meeting any of these thresholds must spend <strong>2% of their average net profit</strong> over the preceding three financial years on CSR activities:</p>
+            <ul>
+                <li>Net worth of ₹500 crore or more, OR</li>
+                <li>Turnover of ₹1,000 crore or more, OR</li>
+                <li>Net profit of ₹5 crore or more</li>
+            </ul>
+        </div>
+        <div class="grid" style="margin-top: 16px;">
+            <div class="feature-card">
+                <h3>Why Healthcare Qualifies</h3>
+                <p>Schedule VII of the Companies Act 2013 explicitly lists "eradicating hunger, poverty and malnutrition, promoting health care including preventive health care" as a qualifying CSR activity. A contribution to GMCH is unambiguously compliant.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Scale of Opportunity</h3>
+                <p>India's total CSR spend in FY 2023-24 reached ₹29,987 crore — up from ₹26,579 crore the prior year. Healthcare consistently receives the second-largest share of total CSR disbursement, with ₹22,000+ crore deployed in health initiatives across India.</p>
+            </div>
+        </div>
+        <div class="warning-card" style="margin-top: 16px;">
+            <h3>Important: Avoid "Unspent CSR" Penalties</h3>
+            <p>The 2021 CSR amendment mandates that unspent CSR funds be transferred to a PM National Relief Fund or other specified fund within 30 days of financial year end. Companies that fail to deploy their full CSR obligation face regulatory scrutiny. A pre-agreed partnership with GMCH, structured before year-end, ensures full deployment with zero compliance risk.</p>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 18: CONTACT -->
+    <div class="section">
+        <div class="section-header">Get in Touch</div>
+        <div class="contact-hero">
+            <div class="contact-name">Professor Suksham Jain</div>
+            <div class="contact-title">Head of Department, Neonatology</div>
+            <div class="contact-title">Member Secretary, Institutional Ethics Committee</div>
+            <div class="contact-inst">Government Medical College &amp; Hospital, Sector 32, Chandigarh — 160030</div>
+            <div class="contact-detail">Hospital: gmch.gov.in</div>
+            <div class="contact-detail">Department: Neonatology, GMCH Sector 32, Chandigarh</div>
+            <div class="contact-detail" style="margin-top: 16px; color: rgba(255,255,255,0.5); font-size: 0.85rem;">We welcome site visits — seeing is believing. The NICU is open to corporate partners by appointment.</div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+// CSR Growth Chart
+const ctx = document.getElementById('csrGrowthChart').getContext('2d');
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['2015', '2017', '2019', '2021', '2022', '2023', '2024'],
+        datasets: [{
+            label: 'India Healthcare CSR Spend (₹ Crore)',
+            data: [8400, 11200, 13800, 16500, 18900, 20100, 22000],
+            backgroundColor: 'rgba(96, 165, 250, 0.25)',
+            borderColor: '#60a5fa',
+            borderWidth: 2,
+            borderRadius: 6
+        }]
+    },
+    options: {
+        responsive: true, maintainAspectRatio: false,
+        backgroundColor: 'transparent',
+        scales: {
+            x: { grid: { color: 'rgba(255,255,255,0.08)' }, ticks: { color: 'rgba(255,255,255,0.7)', font: { family: 'Inter' } } },
+            y: { grid: { color: 'rgba(255,255,255,0.08)' }, ticks: { color: 'rgba(255,255,255,0.7)', font: { family: 'Inter' }, callback: v => '₹' + (v/1000).toFixed(0) + 'K Cr' } }
+        },
+        plugins: {
+            legend: { labels: { color: 'rgba(255,255,255,0.85)', font: { family: 'Inter', size: 12 } } },
+            tooltip: { backgroundColor: '#1e3a5f', titleColor: '#fff', bodyColor: 'rgba(255,255,255,0.85)', borderColor: '#60a5fa', borderWidth: 1 }
+        }
+    }
+});
+</script>
+</body>
+</html>
