@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx skills:*)",
+      "Read(//Users/arkashjain/.agents/skills/release-notes/**)",
+      "WebSearch",
+      "Bash(git add:*)"
+    ]
+  }
+}
