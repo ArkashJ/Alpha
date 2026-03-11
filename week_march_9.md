@@ -1,5 +1,13 @@
 # Table of Contents
 
+- [Tuesday March 10, 2026](#tuesday-march-10-2026)
+  - [News](#news)
+  - [Work todos](#work-todos)
+  - [TODO](#todo)
+  - [Regular todos](#regular-todos)
+  - [Action Items and Notes](#action-items-and-notes)
+- [Monday March 9, 2026](#monday-march-9-2026)
+
 ---
 
 ## Tuesday March 10, 2026
@@ -55,9 +63,9 @@
 
 ### TODO:
 
-- [] **Don Carter Legal Bugle**
-- [] Trevin quote
-- [] Ken & Jeff call tomorrow
+- [ ] **Don Carter Legal Bugle**
+- [ ] Trevin quote
+- [ ] Ken & Jeff call tomorrow
 
 ### Regular todos:
 

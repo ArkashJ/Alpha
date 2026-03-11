@@ -4,7 +4,8 @@
       "Bash(npx skills:*)",
       "Read(//Users/arkashjain/.agents/skills/release-notes/**)",
       "WebSearch",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git push:*)"
     ]
   }
 }
