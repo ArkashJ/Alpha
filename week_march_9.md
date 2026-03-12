@@ -1,12 +1,74 @@
 # Table of Contents
 
+- [Wednesday March 11, 2026](#wednesday-march-11-2026)
 - [Tuesday March 10, 2026](#tuesday-march-10-2026)
   - [News](#news)
   - [Work todos](#work-todos)
   - [TODO](#todo)
   - [Regular todos](#regular-todos)
   - [Action Items and Notes](#action-items-and-notes)
-- [Monday March 9, 2026](#monday-march-9-2026)
+
+## Wednesday March 11, 2026
+
+### News
+
+**Data**
+
+- Oracle $470B not 1T, db revenue soaring, $86.7B expected they hit $90B. On delivery, S-Cuver, 90% of cap beimg hit, backlog RPO is $553B
+- Replit raise $400M at $9b
+- IEA releases 400mn barrels
+- Anduril to double space unit with acquisition
+- Ravi Gupta 1bn for Ithaca holdings
+- Nvidia 2bn with Nebius deal
+- Chatgpt engagement lead more than market lead. DAU:MAU is 45% versus 22% from Gemini, WAU:MAU went from 50% to 82% from 2023, approaching insta better than spotify and gmail
+- perplexity plaid annoucment
+
+**TLDR**
+
+- Morgan stanley preventing withdrawls, AMZN started bond sales for 100 years, including MSFT (treasury + 100 basis)
+- Odd lots about fertilizer - Middle east produces most, Morocco interesting market, Russia number 2 [Odd lots](https://podcasts.apple.com/us/podcast/odd-lots/id1056200096?i=1000754620452) [About OIL](https://podcasts.apple.com/us/podcast/odd-lots/id1056200096?i=1000754422076)
+- Dwarkesh's take - one person's autonomy is another person's misalignment, some history made by refusing orders (Soviet soldier who refused to shoot the night of the Berlin Wall coming down), most AIs will be employed, 100Mil cameras say each takes 1k tokens at 3bucks, 30 Bil -> 3 Bil -> cheaper than renovating a home. Government should realize private companies get more rev from public. [Dwarkesh's Take](https://youtu.be/KBPOTklFTiU?si=rQOs2Q40HSPpTiHD)
+- Sierra OS on harness engineering, internal AIs for giving guardrails, easier with small companies with big companies more stakes invovled
+- 173 million oil barrels from SPR released, Japan releases theirs
+- Apoorva talks about no network effects from Chatgpt, Altimeter concentrated bets on big companies, not addicting like Tiktok. Analogy to whatsapp and chrome, even if you churn you come back
+
+**Book so far**
+
+- Mitchell at National Bank, JP Morgan son's rise to fame, risks in market, go public allocate shares at 20 for friends at big companies
+- Fed doesnt raise rates, bank of england does
+
+### Actual todos:
+
+- [] Trevin code review
+- [] Brad & Eddie Action items and todos
+- [] Ken & Jeff make quickbooks sample account for testing and bug fixes
+- [] Chantal disco done, call on Friday
+- [] Coordinate with Enrin for Discovery
+- [] Check if with Kashan for Jason's updates
+- [] Leonardo sync
+
+### Work todos:
+
+- Trevin PRs merged
+- Benmore meridian updated with new skills (need to push)
+- PCS audit logging, API gateway, Kong, docs, JWT hardening in Kong, API docs, ASCII flows
+- PCS CRL/Workforce PR merged
+- Jay given an update, need to deploy for testing
+- Jim given access to PCS repo ($2.40 for new seat)
+- Old repos deleted, dependabot active
+- GO 180 looms made, updates to Don given
+- Home service Pass PR merged, need to check issue tomorrow morning
+- Jack Frisbee coming in tomorrow, Jason Steele call with Ubiquity done, Kashan sync done
+
+### Action Items and Notes:
+
+- Sam chatted, levian and doghaus
+- Logan meetup, possibly get Aditya involved
+- Papa called - long travel, Kapadiya uncle
+- Payments for PCS are priority ensure we add them
+- Muma exam, GMCH work
+- Hanu subscription for AI done
+- Dadi call, SF updates
 
 ---
 
