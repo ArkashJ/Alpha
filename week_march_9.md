@@ -1,5 +1,6 @@
 # Table of Contents
 
+- [Thursday March 12, 2026](#thursday-march-12-2026)
 - [Wednesday March 11, 2026](#wednesday-march-11-2026)
 - [Tuesday March 10, 2026](#tuesday-march-10-2026)
   - [News](#news)
@@ -7,6 +8,118 @@
   - [TODO](#todo)
   - [Regular todos](#regular-todos)
   - [Action Items and Notes](#action-items-and-notes)
+
+## Sunday, March 15, 2026
+
+### News
+
+![Private Market](./assets/march/ipo.png)
+
+- Reporting requirements, litigation risk and weaponized governance
+- Self certification from SEC <-> CFTC, and ATS
+- Tokenized security is SEC rules, digital token is cftc
+- Part A swap data repo (transparency), cftc monitors reports
+
+- US struck Iran's main oil terminal, israel air defense low, Saudi and countries going to ukraine for drones
+- AT&T cutting deals, trump's legislation cuasing issues with Republicans
+- Equity giving pledge by J-Cal
+- Oil price volatility. trump doctrine is not necon doctrine,IEA released 400M barrels, summit with Xi,
+- China 20% of oil form Iran + Venezuela, 25% youth unemployment
+- AI J curve, anthropic 1bn -> 14bn in 14 months, 12x YoY grow, Value at 380$bn, but databricks and snowflake are crucial, AI isnt?
+- Washintgon +9.9% tax -> schultz to florida miami
+- Cali tax -> bezos to texas 2023. • 71% of Monte Carlo runs → NEGATIVE NPV. $2500 more tax burden per head
+- AMI $1bn, interpositive acquired.
+
+### Work todos
+
+- Jacob Firing, J Quirk, Raymond, Regina, creative block, zanrail
+- Alice closed, Chantal coming in person tomorrow, meeting on Tuesday with Monica
+- Wednesday time for movie
+- Logan, Ben me lunch and walk, Lily and Joel meetup yesterday, Tara texted
+- Add to not another gco
+- Aisa showing attitude to Sam, Liao and Lily chat
+- Talked about Taalas, MatX with Andrew, 4.6 1m default
+- Todo one on one's, everyday pick someone and public train
+- Frisbee and Jim review
+- Don Carter Project finish -> raw product dailies -> train bespoke model, habd filmmakers an engine, mastercard crypto network with circle.
+
+## Saturday, March 14, 2026
+
+### News
+
+- Nvidia inference chip: https://www.ft.com/content/849fab2d-0d04-411d-8fbb-7fe3b515f5bf
+- Chip Analysis: https://newsletter.semianalysis.com/p/the-great-ai-silicon-shortage?_gl=1*1hgczxi*_ga*NjAzNTg5NTMxLjE3NzM1MjIwMTQ.*_ga_FKWNM9FBZ3*czE3NzM1MjIwMTQkbzEkZzAkdDE3NzM1MjIwMTQkajYwJGwwJGgxNzI2Mjk3MDYz
+- Dwarkesh and Dylan podcast
+- All In
+
+### Todos
+
+- Liao meetup
+- Sauna + Jack left (taught him claude code), no luck with Gilbarco, need DRB
+- App needs to be given access to, get review + case study link sent
+- Sent to Patriot Team as well.
+- Cooked food, need to get laundry, read book
+
+## Friday, March 13, 2026
+
+### News
+
+- axios raise $200M mechanistic intrepratability, similar to fireblocks, adding determinism to AI instead of statistically, use Lean like Harmonic
+- slate used for orchestrating agents
+- Cursor Bench for internal cursor eval, evals multi dimensional AI performance, openclaw RL framework for making openclaw better
+- Bytedance got nvidia chips, Aolani claude for 500 blackwells in Malaysia, $2.5Bn in hardware
+
+### News
+
+- Iran laying mines in the strait of hormuz, France sending warships, brent crude at $100 a barrel, gdp growth 0.7% this year
+- Goldman says first rate cute in september
+- Elon converted $2bn investment in x-ai into stake in space x, 2 cursor researchers posted, SEC changing rules for S&P500 entry
+- Honda lets go of electric vehicle plans, first time ine 1957 first annual loss reported, lucid and rivian going for models below 50k
+- BYD launching luxury car, 5 mins for 800 miles,
+- Meta thinking of Gemini partnerhsip, Avocado behind
+- David accussed of poor calorie count, Carlyle overhauled PE team in europe, capital requirements for lenders getting eased
+
+### Personal todos
+
+- Haircut next week ends
+- Trevin new features build
+- Brad & Eddie PR and updates, Propurti updates
+- CLI updated
+
+### Work todos
+
+- Enrin x Arkash sync on Chantal
+- Connor 21st dev
+- Meet Tara, nice party, runner
+- Connor 21st dev cli
+- Kashan 3js skill merged
+- Jacob one on one resume
+- Peter issue showed up, need to finish
+- New devs onboarded - Jacob, Leo, Aditya, Enrin
+- Chantal explanation of diffs, buyers versus seller (3 clauses), detect context change
+
+## Thursday, March 12, 2026
+
+### News
+
+- Replit coding agents in integrated environment
+- Cursor 50bn, anthropic institute, auto-research for slms
+- OAI guide to resist prompt injection
+- atlassian 10% reduction in workforce, 600mil acq. of Ben afleck company, 26Bn model by nvidia
+- Russia made $1.2-2bn in taxes and 3.3-5bn in overall additional revenue
+
+### Work Todos
+
+- PCS need auth, onboarding flows, policies with Jim, Authorization, testing flows for tazworks, CRL
+- Trevin call tomorrow, research for the Bob people, call on Monday
+- Enrin feedback given
+- Nobel gas follow up done
+- Pr merged, Chidera and Trevin call tomorrow
+- Chantal call tomorrow
+- Showed Jack some skills, bm made cli
+- need to do projections tomorrow
+
+---
 
 ## Wednesday March 11, 2026
 
