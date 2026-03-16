@@ -7,6 +7,11 @@ A personal daily event tracker in markdown. Each week gets its own file with str
 ### Weekly Logs
 
 - [Week of March 9, 2026](./week_march_9.md)
+  - [News](./week_march_9.md#news)
+  - [Work Todos](./week_march_9.md#work-todos)
+  - [TODO](./week_march_9.md#todo)
+  - [Regular Todos](./week_march_9.md#regular-todos)
+  - [Action Items and Notes](./week_march_9.md#action-items-and-notes)
 
 ### Heading Structure
 
