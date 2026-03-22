@@ -26,6 +26,21 @@
   - [Action Items and Notes](#action-items-and-notes-1)
 - [Monday March 9, 2026](#monday-march-9-2026)
 
+---
+
+## Weekly Summary Grid
+
+| Day | Key News | Work | Personal |
+|-----|----------|------|----------|
+| **Sun 3/15** | Iran oil strike; AI J-curve (Anthropic 1B→14B, 12× YoY); Washington 9.9% tax→Schultz to FL | Jacob firing; Chantal in person Mon; Alice closed; Don Carter project | Ben/Logan lunch; Lily/Joel meetup; Tara texted |
+| **Sat 3/14** | Nvidia inference chip (FT); AI silicon shortage (Semianalysis); Dwarkesh/Dylan pod | — | Liao meetup; Sauna + Jack; app review; food/laundry |
+| **Fri 3/13** | Axios $200M (mechanistic interpretability); Cursor $50B; Bytedance Nvidia chips; Iran mines Strait of Hormuz; Goldman rate cut Sep | Enrin×Chantal sync; Connor 21st dev; Jacob 1:1; new devs onboarded (Jacob, Leo, Aditya, Enrin) | Haircut next week; Trevin features; Brad & Eddie; CLI updated |
+| **Thu 3/12** | Replit coding agents; Cursor $50B; OAI prompt injection guide; Atlassian −10% | PCS auth/onboarding; Nobel gas handoff done; projections tmrw; Jack showed skills | — |
+| **Wed 3/11** | Oracle $470B; Replit $400M; ChatGPT DAU:MAU 45% vs Gemini 22%; Perplexity×Plaid | PCS audit logging + Kong; CRL merged; Benmore skills updated; Jim given repo access | Papa called; Logan meetup; Hanu AI sub done; Dadi call |
+| **Tue 3/10** | Apple 25% iPhones in India; NJ PJM vs ERCOT energy; AI 56% global search; ChatGPT WAU:MAU 82%; Mira Murati×Nvidia | Banjo 112; Nobel gas handoff; CRL testing; Brad & Eddie PR; Chantal grids sent | SF trip booked Apr 28; Splitwise $754 |
+
+---
+
 ## Sunday, March 15, 2026
 
 ### News
