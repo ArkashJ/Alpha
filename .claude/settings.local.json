@@ -5,7 +5,14 @@
       "Read(//Users/arkashjain/.agents/skills/release-notes/**)",
       "WebSearch",
       "Bash(git add:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "mcp__MCP_DOCKER__mcp-add",
+      "mcp__MCP_DOCKER__mcp-find",
+      "mcp__MCP_DOCKER__read_me",
+      "mcp__MCP_DOCKER__create_view",
+      "mcp__MCP_DOCKER__export_to_excalidraw",
+      "Bash(open:*)",
+      "Bash(python3:*)"
     ]
   }
 }
