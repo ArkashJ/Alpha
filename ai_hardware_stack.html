@@ -60,7 +60,7 @@ kbd{background:#21262d;border:1px solid #30363d;border-radius:3px;padding:1px 5p
 <nav>
   <div class="brand">
     <h1>AI Hardware Stack</h1>
-    <p>7 Layers &middot; Bottom to Top</p>
+    <p>7 Layers + Deep Dives</p>
   </div>
   <div class="layers">
     <button data-slide="overview" class="active"><span class="num">&bull;</span> Full Stack Overview</button>
@@ -73,6 +73,8 @@ kbd{background:#21262d;border:1px solid #30363d;border-radius:3px;padding:1px 5p
     <button data-slide="layer1"><span class="num">L1</span> Inference &amp; Serving</button>
     <button data-slide="claude-session"><span class="num">&rarr;</span> A Claude Code Session</button>
     <button data-slide="inference-split"><span class="num">&rarr;</span> SRAM vs HBM Split</button>
+    <button data-slide="cpo"><span class="num">&rarr;</span> Co-Packaged Optics</button>
+    <button data-slide="eda"><span class="num">&rarr;</span> EDA Chip Design</button>
   </div>
   <div class="footer">Use arrow keys to navigate</div>
 </nav>
@@ -1305,12 +1307,352 @@ The lines are blurring. NVIDIA's Vera Rubin platform now includes Groq LPUs alon
 </div>
 </section>
 
+<!-- ============================================================ -->
+<!-- CO-PACKAGED OPTICS (CPO)                                     -->
+<!-- ============================================================ -->
+<section class="slide" id="cpo">
+<div class="layer-num">Deep Dive &mdash; Optics</div>
+<h2>Co-Packaged Optics (CPO)</h2>
+<p class="subtitle">Replacing lossy electrical traces with silicon photonics integrated directly onto the switch package. Cuts power 65%, extends reach from meters to kilometers, and enables 100+ Tb/s switch bandwidth. 2026 is the volume deployment year.</p>
+
+<div class="analogy">
+<div class="tag">Analogy</div>
+Currently, data inside a datacenter travels as <em>electricity over copper wires</em>, then gets converted to <em>light</em> for longer distances using a bulky pluggable module on the front panel. CPO moves the light converter <em>directly onto the chip package</em> — like moving the translator from the lobby into your office. No more signal loss walking down the hallway. The result: 65% less power, 100x more reach, and 2-3x more ports per switch.
+</div>
+
+<h3>Traditional Pluggable vs Co-Packaged Optics</h3>
+
+<div class="ascii-flow">
+  <span class="r">TRADITIONAL (Pluggable Optics):</span>
+
+  <span class="h">Switch ASIC</span>                          <span class="o">Pluggable Module</span>
+  <span class="h">+----------+</span>    electrical traces    <span class="o">+-------------+</span>    optical fiber
+  <span class="h">|          |</span> -------- ~15 cm -----&gt; <span class="o">| Transceiver |</span> ===== fiber ====&gt; remote
+  <span class="h">| Digital  |</span>    (lossy, hot)        <span class="o">| QSFP-DD     |</span>   (long reach)
+  <span class="h">| Logic    |</span>    ~15-25W per         <span class="o">| E/O + O/E   |</span>
+  <span class="h">+----------+</span>    800G port           <span class="o">+-------------+</span>
+
+     <span class="r">Problems:</span>
+     <span class="d">- Signal degrades over 15cm of board traces (SerDes power)</span>
+     <span class="d">- E/O conversion at package boundary is power-hungry</span>
+     <span class="d">- Front-panel space limits port density</span>
+     <span class="d">- Cannot scale beyond ~51.2 Tb/s per switch</span>
+
+  <span class="d">--------------------------------------------------------------------------</span>
+
+  <span class="g">CO-PACKAGED OPTICS:</span>
+
+  <span class="g">+------------------------------------------+</span>    optical fiber
+  <span class="g">| Switch Package                            |</span> ===== fiber ====&gt; remote
+  <span class="g">|  +----------+    +---------------------+  |</span>   (100x reach)
+  <span class="g">|  | Switch   |---&gt;| Optical Engine      |  |</span>
+  <span class="g">|  | ASIC     |    | (Silicon Photonic   |  |</span>
+  <span class="g">|  |          |    |  die ON package)    |  |</span>
+  <span class="g">|  |          |    |                     |  |</span>
+  <span class="g">|  | Broadcom |    | Laser + Modulator   |  |</span>
+  <span class="g">|  | or NVIDIA|    | + Photodetector     |  |</span>
+  <span class="g">|  +----------+    +---------------------+  |</span>
+  <span class="g">+------------------------------------------+</span>
+
+     <span class="g">Benefits:</span>
+     <span class="d">- No board traces for data (mm-scale, not cm)</span>
+     <span class="d">- E/O conversion on-package (minimal loss)</span>
+     <span class="d">- 65% power reduction vs pluggable</span>
+     <span class="d">- 3.5x more energy efficient per bit</span>
+     <span class="d">- 2-3x higher port density</span>
+</div>
+
+<h3>Data Flow Through a CPO Engine</h3>
+
+<div class="ascii-flow">
+  <span class="w">TRANSMIT PATH (Electrical to Optical):</span>
+
+  <span class="h">Switch Die</span>                    <span class="g">Silicon Photonic Engine</span>
+  +----------+                   +----------------------------+
+  |          |  electrical       |  +---------+  +----------+ |
+  | Digital  | --short path---&gt; |  | Driver  |--&gt;|Modulator | |--&gt; <span class="p">Fiber out</span>
+  | Logic    |  (on-package,    |  | Circuit |  |(Mach-    | |    <span class="p">(light)</span>
+  |          |   mm-scale)      |  |         |  | Zehnder) | |
+  +----------+                   |  +---------+  +----------+ |
+                                 +----------------------------+
+
+  <span class="w">RECEIVE PATH (Optical to Electrical):</span>
+
+  <span class="h">Switch Die</span>                    <span class="g">Silicon Photonic Engine</span>
+  +----------+                   +----------------------------+
+  |          |  electrical       |  +---------+  +----------+ |
+  | Digital  | &lt;--short path--- |  |  TIA    |&lt;--|  Photo-  | |&lt;-- <span class="p">Fiber in</span>
+  | Logic    |  (on-package,    |  | (Trans- |  | detector | |    <span class="p">(light)</span>
+  |          |   mm-scale)      |  |  imped.)|  |          | |
+  +----------+                   |  +---------+  +----------+ |
+                                 +----------------------------+
+
+  <span class="d">Mach-Zehnder modulator: encodes data by varying light phase</span>
+  <span class="d">TIA: converts photocurrent to voltage (trans-impedance amplifier)</span>
+  <span class="d">Key: all conversion happens ON the package, not on a separate module</span>
+</div>
+
+<div class="analogy">
+<div class="tag">Analogy — The Two Paths</div>
+Sending data with CPO is like a <em>translator sitting right next to you</em> instead of in a booth across the room. When you speak (electrical signal), the translator instantly converts to the other language (light). When someone speaks back (light arrives), the translator instantly converts back. Because the translator is inches away instead of across the room, there's no time wasted, no signal lost, and the translator uses much less energy.
+</div>
+
+<h3>CPO Key Players and Timeline</h3>
+
+<div class="ascii-flow">
+  <span class="w">Company</span>           <span class="w">Product</span>                       <span class="w">Bandwidth</span>     <span class="w">Timeline</span>
+  <span class="d">----------------  ----------------------------  -----------   ----------</span>
+  <span class="h">NVIDIA</span>            Quantum-X (InfiniBand + CPO)  1.6 Tb/s      2H 2025
+  <span class="h">NVIDIA</span>            Spectrum-X (Ethernet + CPO)   3.2 Tb/s      2H 2026
+  <span class="g">Broadcom</span>          TH6-Davisson (Ethernet)       102.4 Tb/s    2025-2026
+  <span class="o">Marvell</span>           CPO for AI datacenters        TBD           2026+
+  <span class="p">Ayar Labs</span>         In-package optical I/O        TBD           2025+
+
+  <span class="d">Market projection: &gt;$20B by 2036 (37% CAGR), inflection point in 2026</span>
+</div>
+
+<h3>Pluggable vs CPO: Head-to-Head</h3>
+
+<div class="ascii-flow">
+  <span class="w">Metric</span>                    <span class="r">Pluggable</span>          <span class="g">CPO</span>
+  <span class="d">------------------------  -----------------  -----------------</span>
+  Switch bandwidth          51.2 Tb/s          <span class="g">100+ Tb/s</span>
+  Power per 800G port       ~15-25W            <span class="g">~5-9W</span>
+  Reach (copper)            &lt;10m               N/A
+  Reach (optical)           10-2000m           <span class="g">&gt;1000m</span>
+  Port density              Constrained        <span class="g">2-3x higher</span>
+  Cooling challenge         Major              <span class="g">Reduced</span>
+  Serviceability            Hot-swappable      <span class="r">Non-removable</span>
+  Maturity                  Production          Early production
+</div>
+
+<div class="analogy">
+<div class="tag">Analogy — Why CPO Matters for AI</div>
+AI training clusters have <em>thousands of GPUs</em> that need to communicate constantly. With pluggable optics, each switch wastes 15-25 watts per port just on signal conversion. At 100,000+ GPU scale, that's <em>megawatts of wasted power</em>. CPO cuts that by 65%. It's like upgrading from incandescent bulbs to LEDs — same brightness, fraction of the electricity. And because CPO supports 2-3x more ports, you can build <em>flatter network topologies</em> with fewer hops between any two GPUs.
+</div>
+
+<div class="metrics">
+<div class="metric"><div class="label">Power Savings</div><div class="value">65%</div><div class="detail">vs pluggable per port</div></div>
+<div class="metric"><div class="label">TH6-Davisson</div><div class="value">102.4 Tb/s</div><div class="detail">Broadcom CPO switch</div></div>
+<div class="metric"><div class="label">Market Size</div><div class="value">$20B+</div><div class="detail">by 2036, 37% CAGR</div></div>
+<div class="metric"><div class="label">Energy Efficiency</div><div class="value">3.5x</div><div class="detail">better per bit vs pluggable</div></div>
+</div>
+
+<div class="callout info">
+<div class="tag">The Serviceability Tradeoff</div>
+The one downside of CPO: pluggable transceivers can be hot-swapped in seconds if one fails. CPO optical engines are permanently attached to the switch package — if one fails, the entire switch must be replaced. This is why some hyperscalers are cautious: at 100K+ switch scale, transceiver failures are daily events. The industry is betting CPO reliability will offset the serviceability loss, but this remains an active engineering challenge.
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- EDA CHIP DESIGN PIPELINE                                      -->
+<!-- ============================================================ -->
+<section class="slide" id="eda">
+<div class="layer-num">Deep Dive &mdash; Chip Design</div>
+<h2>EDA Chip Design Pipeline</h2>
+<p class="subtitle">Cadence and Synopsys control ~70% of the EDA market. Their tools take a chip from idea to silicon through 7 stages. One bug at tapeout = $100M+ and 6 months lost. AI is now designing AI chips.</p>
+
+<div class="analogy">
+<div class="tag">Analogy</div>
+Designing a chip is like <em>building a city from scratch</em>. You start with a master plan (architecture), draw detailed blueprints for every building (RTL), inspect every blueprint for errors (verification), figure out which materials to use (synthesis), decide where every building goes and how roads connect them (place &amp; route), do final inspections (signoff), then hand it to the construction company (TSMC). The "city" has 208 billion buildings (transistors), 15+ layers of roads (metal layers), and if you find one structural flaw after construction starts, you tear everything down — $100M gone, 6 months lost.
+</div>
+
+<h3>The 7-Stage Pipeline</h3>
+
+<div class="ascii-flow">
+  <span class="w">1. ARCHITECTURE</span>                              <span class="d">Define what the chip does</span>
+  <span class="d">|</span>  Define ISA, SM count, tensor core specs, memory hierarchy
+  <span class="d">|</span>  Power budget, NVLink ports, die area targets
+  <span class="d">|</span>  Tools: SystemC/TLM modeling, Arm FastModels
+  <span class="d">|</span>
+  <span class="d">v</span>
+  <span class="h">2. RTL DESIGN</span>                                <span class="d">Write the logic in code</span>
+  <span class="d">|</span>  Verilog / SystemVerilog for every block:
+  <span class="d">|</span>  SMs, Tensor Cores, L2 controllers, NVLink PHYs
+  <span class="d">|</span>  H100: 80B transistors   B200: 208B transistors
+  <span class="d">|</span>
+  <span class="d">v</span>
+  <span class="g">3. VERIFICATION</span>                              <span class="d">Prove it actually works</span>
+  <span class="d">|</span>  RTL simulation (cycle-accurate)
+  <span class="d">|</span>  UVM (Universal Verification Methodology)
+  <span class="d">|</span>  Formal verification (mathematical proof)
+  <span class="d">|</span>  Emulation on Palladium / ZeBu hardware
+  <span class="d">|</span>  <span class="r">208B transistors = weeks of simulation</span>
+  <span class="d">|</span>  <span class="r">One bug = $100M+ respin + 6 month delay</span>
+  <span class="d">|</span>
+  <span class="d">v</span>
+  <span class="o">4. LOGIC SYNTHESIS</span>                           <span class="d">Turn code into circuits</span>
+  <span class="d">|</span>  RTL --&gt; Gate-level netlist (AND, OR, FF gates)
+  <span class="d">|</span>  Optimizes for timing, area, power
+  <span class="d">|</span>  Targets TSMC 3nm/4nm standard cell libraries
+  <span class="d">|</span>
+  <span class="d">v</span>
+  <span class="r">5. PLACE &amp; ROUTE</span>                             <span class="d">Physical layout on silicon</span>
+  <span class="d">|</span>  Floorplan: assign blocks to regions
+  <span class="d">|</span>  Place: position billions of standard cells
+  <span class="d">|</span>  Clock tree: distribute clock to all flip-flops
+  <span class="d">|</span>  Route: connect with 15+ metal layers
+  <span class="d">|</span>
+  <span class="d">v</span>
+  <span class="p">6. SIGNOFF</span>                                   <span class="d">Final checks before tapeout</span>
+  <span class="d">|</span>  Timing: verify all paths meet frequency target
+  <span class="d">|</span>  Power: verify grid, IR drop, electromigration
+  <span class="d">|</span>  Physical: DRC (fab rules) + LVS (layout = schematic)
+  <span class="d">|</span>
+  <span class="d">v</span>
+  <span class="w">7. FABRICATION + PACKAGING</span>                   <span class="d">Build the physical chip</span>
+     GDSII file --&gt; TSMC 3nm/4nm fab
+     Wafer processing: ~3-4 months
+     CoWoS packaging: mount GPU + HBM on interposer
+     Total: 6-12 months from tapeout to volume
+</div>
+
+<div class="analogy">
+<div class="tag">Analogy — Each Stage</div>
+<em>Stage 1</em>: The mayor decides the city needs 576 factories and 18 highways. <em>Stage 2</em>: Architects draw detailed blueprints for every building. <em>Stage 3</em>: Inspectors check every blueprint — does the plumbing work? Do the elevators reach every floor? <em>Stage 4</em>: Engineers choose specific bricks and wiring from the catalog. <em>Stage 5</em>: Urban planners decide where each building goes and route all roads. <em>Stage 6</em>: Final inspection — fire code, structural integrity, electrical safety. <em>Stage 7</em>: TSMC builds it. If inspectors missed a flaw? Demolish and rebuild. $100M+ gone.
+</div>
+
+<h3>Cadence vs Synopsys: Tool-for-Tool</h3>
+
+<div class="ascii-flow">
+  <span class="d">Cadence Flow:                              Synopsys Flow:</span>
+
+  <span class="w">RTL (Verilog/VHDL)</span>                           <span class="w">RTL (Verilog/VHDL)</span>
+       <span class="d">|</span>                                             <span class="d">|</span>
+       <span class="d">v</span>                                             <span class="d">v</span>
+  <span class="h">[Genus]</span> Logic Synthesis                     <span class="h">[Design Compiler]</span>
+       <span class="d">|</span>  netlist                                    <span class="d">|</span>  netlist
+       <span class="d">v</span>                                             <span class="d">v</span>
+  <span class="g">[Innovus]</span> Place &amp; Route                    <span class="g">[IC Compiler II]</span>
+       <span class="d">|</span>  layout                                     <span class="d">|</span>  layout
+       <span class="d">v</span>                                             <span class="d">v</span>
+  <span class="o">[Xcelium]</span> Verification                    <span class="o">[VCS]</span> Verification
+       <span class="d">|</span>  clean DRC/LVS                              <span class="d">|</span>  clean DRC/LVS
+       <span class="d">v</span>                                             <span class="d">v</span>
+  <span class="r">[Tempus]</span> Timing Signoff                   <span class="r">[PrimeTime]</span> Timing Signoff
+       <span class="d">|</span>                                             <span class="d">|</span>
+       <span class="d">v</span>                                             <span class="d">v</span>
+  <span class="p">[Pegasus]</span> Physical Signoff                 <span class="p">[IC Validator]</span> Phys Signoff
+       <span class="d">|</span>                                             <span class="d">|</span>
+       <span class="d">v</span>                                             <span class="d">v</span>
+    <span class="w">GDSII Tapeout</span>                               <span class="w">GDSII Tapeout</span>
+</div>
+
+<h3>Place &amp; Route: What It Actually Looks Like</h3>
+
+<div class="ascii-flow">
+  <span class="d">Floorplan of a GPU die (simplified):</span>
+
+  <span class="w">+================================================================+</span>
+  <span class="w">|</span>                     <span class="h">GPU Die (~814 mm2)</span>                        <span class="w">|</span>
+  <span class="w">|</span>                                                                <span class="w">|</span>
+  <span class="w">|</span>  <span class="g">+------+</span> <span class="g">+------+</span> <span class="g">+------+</span> <span class="g">+------+</span> <span class="g">+------+</span> <span class="g">+------+</span>      <span class="w">|</span>
+  <span class="w">|</span>  <span class="g">| SM 0 |</span> <span class="g">| SM 1 |</span> <span class="g">| SM 2 |</span> <span class="g">| SM 3 |</span> <span class="g">| SM 4 |</span> <span class="g">| SM 5 |</span>      <span class="w">|</span>
+  <span class="w">|</span>  <span class="g">+------+</span> <span class="g">+------+</span> <span class="g">+------+</span> <span class="g">+------+</span> <span class="g">+------+</span> <span class="g">+------+</span>      <span class="w">|</span>
+  <span class="w">|</span>  <span class="g">+------+</span> <span class="g">+------+</span> <span class="g">+------+</span> <span class="g">+------+</span> <span class="g">+------+</span> <span class="g">+------+</span>      <span class="w">|</span>
+  <span class="w">|</span>  <span class="g">| SM 6 |</span> <span class="g">| SM 7 |</span> <span class="g">|  ... |</span> <span class="g">|  ... |</span> <span class="g">|  ... |</span> <span class="g">|SM 113|</span>      <span class="w">|</span>
+  <span class="w">|</span>  <span class="g">+------+</span> <span class="g">+------+</span> <span class="g">+------+</span> <span class="g">+------+</span> <span class="g">+------+</span> <span class="g">+------+</span>      <span class="w">|</span>
+  <span class="w">|</span>                                                                <span class="w">|</span>
+  <span class="w">|</span>  <span class="o">+========================+</span>  <span class="p">+========================+</span>    <span class="w">|</span>
+  <span class="w">|</span>  <span class="o">|     L2 Cache (50 MB)   |</span>  <span class="p">|    Memory Controllers  |</span>    <span class="w">|</span>
+  <span class="w">|</span>  <span class="o">+========================+</span>  <span class="p">+========================+</span>    <span class="w">|</span>
+  <span class="w">|</span>                                                                <span class="w">|</span>
+  <span class="w">|</span>  <span class="h">+--------+</span> <span class="h">+--------+</span> <span class="h">+--------+</span> <span class="h">+--------+</span> <span class="h">+--------+</span>    <span class="w">|</span>
+  <span class="w">|</span>  <span class="h">|NVLink  |</span> <span class="h">|NVLink  |</span> <span class="h">|NVLink  |</span> <span class="h">| PCIe   |</span> <span class="h">| PCIe   |</span>    <span class="w">|</span>
+  <span class="w">|</span>  <span class="h">|PHY 0-5 |</span> <span class="h">|PHY 6-11|</span> <span class="h">|PHY12-17|</span> <span class="h">| Gen5   |</span> <span class="h">| Gen5   |</span>    <span class="w">|</span>
+  <span class="w">|</span>  <span class="h">+--------+</span> <span class="h">+--------+</span> <span class="h">+--------+</span> <span class="h">+--------+</span> <span class="h">+--------+</span>    <span class="w">|</span>
+  <span class="w">+================================================================+</span>
+
+  <span class="d">The P&amp;R tool positions every cell and routes 15+ metal layers</span>
+  <span class="d">of interconnect between them. For 80B transistors, this is an</span>
+  <span class="d">NP-hard optimization problem — which is why AI is being used.</span>
+</div>
+
+<div class="analogy">
+<div class="tag">Analogy — Place &amp; Route</div>
+Place &amp; route is like solving <em>the world's hardest jigsaw puzzle while also designing the road system</em>. You have 80 billion pieces (transistors) that need exact positions on a surface the size of a thumbnail. Then you connect them all with 15 layers of microscopic wiring — imagine 15 transparent sheets stacked on top of each other, each with its own road network. The wiring must ensure every signal arrives on time (timing closure), no two wires short-circuit (DRC), and the power grid can deliver electricity to every corner (IR drop).
+</div>
+
+<h3>AI Designing AI Chips</h3>
+
+<div class="ascii-flow">
+  <span class="w">The Meta-Loop: AI chips are now designed by AI</span>
+
+  <span class="g">Synopsys DSO.ai</span> (Design Space Optimization)
+  +----------------------------------------------------------+
+  |  Reinforcement Learning agent explores floorplan space    |
+  |                                                          |
+  |  State:  current layout metrics (timing, area, power)    |
+  |  Action: adjust block placement, routing priorities      |
+  |  Reward: timing slack * area efficiency * power budget   |
+  |                                                          |
+  |  Explores 1000s of options humans would never try        |
+  |  Result: 5-10x faster design closure                     |
+  +----------------------------------------------------------+
+
+  <span class="h">Cadence ChipStack Super Agent</span> (Agentic AI, Feb 2026)
+  +----------------------------------------------------------+
+  |  Multi-agent system for 3D-IC verification                |
+  |                                                          |
+  |  Agent 1: identifies critical timing paths                |
+  |  Agent 2: checks power integrity across chiplets          |
+  |  Agent 3: validates thermal profiles                      |
+  |  Agent 4: cross-references DRC with layout intent         |
+  |                                                          |
+  |  Claims 10x speedup for 3D-IC design verification        |
+  +----------------------------------------------------------+
+
+  <span class="p">NVIDIA GPU-Accelerated EDA</span>
+  +----------------------------------------------------------+
+  |  NVIDIA invested $2B in Synopsys                          |
+  |                                                          |
+  |  PrimeSim on GH200: 15x SPICE simulation speedup         |
+  |  cuLitho:  GPU-accelerated computational lithography      |
+  |  Result:   mask generation 40x faster on H100 vs CPU     |
+  +----------------------------------------------------------+
+
+  <span class="d">"Chips designed for AI, by AI" — the recursive loop</span>
+</div>
+
+<div class="analogy">
+<div class="tag">Analogy — AI Designing AI Chips</div>
+This is like <em>an architect using a building they designed to design better buildings</em>. Synopsys DSO.ai is an RL agent (trained on GPUs) that explores thousands of chip layout options humans would never try. Cadence's ChipStack deploys a <em>team of AI agents</em> that each specialize in a different aspect of chip verification. And NVIDIA invested $2B in Synopsys to accelerate the simulation tools themselves on GPUs. The meta-irony: the GPU designs the next GPU.
+</div>
+
+<h3>EDA Market Dynamics</h3>
+
+<div class="ascii-flow">
+  <span class="w">Metric</span>                    <span class="w">Value</span>
+  <span class="d">------------------------  ----------------------------------------</span>
+  Market duopoly            Synopsys + Cadence = ~70% of EDA market
+  Cadence Q1 2025 rev       $1.24B (+23% YoY)
+  Total addressable market  $34.71B by 2035 (15-20% CAGR)
+  NVIDIA EDA investment     $2B into Synopsys (GPU-accelerated EDA)
+
+  <span class="d">Key trend: AI workloads drive chip complexity, which drives EDA</span>
+  <span class="d">spend, which funds AI-powered EDA tools, which design better AI</span>
+  <span class="d">chips. A self-reinforcing flywheel.</span>
+</div>
+
+<div class="metrics">
+<div class="metric"><div class="label">EDA Duopoly</div><div class="value">~70%</div><div class="detail">Synopsys + Cadence market share</div></div>
+<div class="metric"><div class="label">Cadence Revenue</div><div class="value">$1.24B</div><div class="detail">Q1 2025, +23% YoY</div></div>
+<div class="metric"><div class="label">NVIDIA in Synopsys</div><div class="value">$2B</div><div class="detail">GPU-accelerated simulation</div></div>
+<div class="metric"><div class="label">Respin Cost</div><div class="value">$100M+</div><div class="detail">+ 6 months for one tapeout bug</div></div>
+</div>
+
+<div class="callout warn">
+<div class="tag">The $100M Bug</div>
+At 208 billion transistors, functional verification is the longest and most expensive phase of chip design. A single missed bug that makes it to tapeout means: scrapping the mask set ($5-10M), re-running fabrication (~4 months at TSMC), re-doing packaging and testing (~2 months), and lost revenue from delayed product. Total cost: $100M+ and 6+ months. This is why verification consumes ~60% of the total chip design effort, and why Cadence and Synopsys are pouring resources into AI-assisted verification.
+</div>
+</section>
+
 </main>
 
 <div class="kbd-hint"><kbd>&larr;</kbd> <kbd>&rarr;</kbd> Navigate layers</div>
 
 <script>
-const slides = ['overview','layer7','layer6','layer5','layer4','layer3','layer2','layer1','claude-session','inference-split'];
+const slides = ['overview','layer7','layer6','layer5','layer4','layer3','layer2','layer1','claude-session','inference-split','cpo','eda'];
 let current = 0;
 
 function showSlide(idx) {
