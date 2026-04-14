@@ -12,7 +12,10 @@
       "mcp__MCP_DOCKER__create_view",
       "mcp__MCP_DOCKER__export_to_excalidraw",
       "Bash(open:*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "WebFetch(domain:finance.yahoo.com)",
+      "WebFetch(domain:www.marketbeat.com)",
+      "WebFetch(domain:www.barchart.com)"
     ]
   }
 }
