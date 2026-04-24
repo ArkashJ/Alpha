@@ -52,4 +52,12 @@ day 8 - fly back, c1 lounge, cattle logic on app store and linkedin post
 boom. meta laid off 10%, AWS 26B in anthropic, google 40bn in anthropic. in private markets
 anthropic hit 1T over 880B from OAI, Codex 5.5 comes out.
 - traded LITE options, made 1800 bucks, taxes owed equal to 540 bucks.
-- 
+- follow upcoming news for options trading/calls. 
+- SPY at 713, Taiwan stock market hits 4T in valuation witb tsmc 40% of the weight,
+- tsmc isnt buying asml latest until 2029
+- xai + cursor deal, jane street made 40b with 11M per employee, 
+- cursor 60bn option to buy, coreweave 6bn investment with 1bn equity stake
+- Tushar with presentation on cpo and 7 layers of the stack.
+- Ken Griffin's 238M home recorded by Zohran, 6k construction jobs in renovation might be pulled. 2.5bn paid by citadel employees in taxes
+to nyc in last 5 years.
+- stripe sessions agenda set. repo on saving tokens with compound engineering
