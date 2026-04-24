@@ -69,3 +69,7 @@ but deepseek doesnt want to lose too much control. valuation from 10bn to 20bn.
 - opus 4.7 used new embeddings, instacart co founder launched hedge fund, intel earnings beat by 20%.
 - google workspace debut. 
 - perplexity uses a 2 stage pipeline using sft followed by rl. start with qwen 3 to do faster search. 
+- anker makes ai chips
+- nvidia backs vast data at 1bn raised for 30b valuation.
+
+
