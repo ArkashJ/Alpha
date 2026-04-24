@@ -78,3 +78,4 @@ and including employee comp as an expense
 - ramp labs found ai agents ignore their own budgets, needed to add a controller model
 - avs short squeeze, India forward fx block, naval's new fund with angellist.
 
+- my thesis around saas becoming platform, mythos leaks causing security patches.
