@@ -61,3 +61,11 @@ anthropic hit 1T over 880B from OAI, Codex 5.5 comes out.
 - Ken Griffin's 238M home recorded by Zohran, 6k construction jobs in renovation might be pulled. 2.5bn paid by citadel employees in taxes
 to nyc in last 5 years.
 - stripe sessions agenda set. repo on saving tokens with compound engineering
+
+- deepseek v4 came out, huawei ascend 950 will reduce price per token. tencent + alibaba on 20Bn val for deepseek
+but deepseek doesnt want to lose too much control. valuation from 10bn to 20bn.
+- openai privacy filter model, cognition at 25bn valuation.
+- tbpn emmy. msft 7% staff early retirement offer given.
+- opus 4.7 used new embeddings, instacart co founder launched hedge fund, intel earnings beat by 20%.
+- google workspace debut. 
+- perplexity uses a 2 stage pipeline using sft followed by rl. start with qwen 3 to do faster search. 
