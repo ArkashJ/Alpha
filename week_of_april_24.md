@@ -72,4 +72,7 @@ but deepseek doesnt want to lose too much control. valuation from 10bn to 20bn.
 - anker makes ai chips
 - nvidia backs vast data at 1bn raised for 30b valuation.
 
+- change from P/E ratio to multiples of FCF, back to GAAP accounting
+and including employee comp as an expense
+- sovereign financing by issuing 40 yr bonds, google launched 100 year bond which was 10 fold over subscribed.
 
