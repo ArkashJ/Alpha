@@ -14,4 +14,5 @@ bring titov with me and Sam codes.
 - UAE exits opec, Msft and openai instead of pre-emptive lawsuit, can use other models. google invests 40bn in claude
 - OAI missed revenue targets, 1bn users, open source and closed source gap is tigtening
 - junk bond credit crunch because of floating rates from 2015 getting refinanced
-- 
+- Recursive language models to prevent context rot by storing data in python repl envs.
+- manus deal blocked by China
